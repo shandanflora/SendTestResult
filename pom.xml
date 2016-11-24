@@ -12,6 +12,8 @@
     <slf4j.version>1.7.1</slf4j.version>
     <logback.version>1.0.7</logback.version>
     <mail.version>1.5.5</mail.version>
+    <lang3.version>3.4</lang3.version>
+    <jcommander.version>1.48</jcommander.version>
   </properties>
 
   <dependencies>
@@ -60,19 +62,35 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.4</version>
+      <version>${lang3.version}</version>
     </dependency>
 
       <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
       <dependency>
           <groupId>com.beust</groupId>
           <artifactId>jcommander</artifactId>
-          <version>1.48</version>
+          <version>${jcommander.version}</version>
       </dependency>
 
   </dependencies>
   <build>
-    <finalName>com.ecovacs.test</finalName>
+    <finalName>SendTestResult</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>com.ecovacs.test.SendTestResult</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
 </project>
